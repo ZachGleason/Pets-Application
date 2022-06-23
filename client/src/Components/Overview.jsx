@@ -2,11 +2,13 @@ import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import General from './General';
+import Schedule from '../Components/Schedule';
+import Media from '../Components/Media';
 
 const Overview = () => {
   return (
     <div >
-        <Tabs style={{ maxWidth: "70%", border: "1px solid black", height: "80%", marginLeft: 50, borderRadius: 8}}>
+        <Tabs style={{ maxWidth: "95%", border: "1px solid black", height: "80%", borderRadius: 8, marginLeft: 13}}>
             <TabList>
             <Tab>General</Tab>
             <Tab>Schedule</Tab>
@@ -19,11 +21,11 @@ const Overview = () => {
               </TabPanel>
 
               <TabPanel>
-              <h2>Any content 2</h2>
+                <Schedule />
               </TabPanel>
 
-              <TabPanel>
-              <h2>test</h2>
+              <TabPanel> 
+                <Media />
               </TabPanel>
             </div>
         </Tabs>
