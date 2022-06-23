@@ -1,0 +1,36 @@
+.background {
+    height: 100vh;
+    background-image: url('./Assets/background.jpeg');
+}
+.header {
+    font-family: 'Abel';
+}
+.welcome {
+    font-family: 'Abel';
+    font-weight: 800;
+    text-align: center;
+}
+.button {
+    border-radius: 10;
+}
+h5 {
+    display: flex;
+    flex-direction: row;
+  }
+  h5:before, h5:after{
+    content: "";
+    flex: 1 1;
+    border-bottom: 1px solid;
+    margin: auto;
+  }
+  h5:before {
+    margin-right: 10px
+  }
+  h5:after {
+    margin-left: 10px
+  }
+
+.left {
+    margin-left: 10;
+}
+  
