@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"george1\",\r\n    \"phone\": \"800.392.3343\",\r\n    \"email\": \"georgeC@seinfeld.com\",\r\n    \"password\": \"12rfebc#\"\r\n}",
+							"raw": "{\r\n    \"username\": \"jpeterman\",\r\n    \"phone\": \"800.313.3354\",\r\n    \"email\": \"jpeterman@seinfeld.com\",\r\n    \"password\": \"wordy\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -23,7 +23,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/user/create",
+							"raw": "http://localhost:8000/api/user/register",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -32,7 +32,7 @@
 							"path": [
 								"api",
 								"user",
-								"create"
+								"register"
 							]
 						}
 					},
