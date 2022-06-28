@@ -4,7 +4,8 @@ import { FaEdit } from "react-icons/fa";
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
-import { FormControl, FormControlLabel } from '@mui/material';
+import { FormControlLabel } from '@mui/material/FormControlLabel';
+import axios from 'axios';
 
 const Schedule = () => {
 
@@ -13,15 +14,27 @@ const Schedule = () => {
         { value: 'John', label: 'John' },
         { value: 'Jake', label: 'Jake' }
       ]
+    const {id} = useParams();
+    console.log('ID', id);
+    useEffect(() => {
+        axios
+        .get(`http://localhost:8000/api/schedule/${id}`)
+        .then((res) => {
+        console.log('User', res.data);
+        setUser(res.data);
+        })
+        .catch((err) => {
+        console.log(err);
+        });
+    }, []);
 
   return (
-   <>
-    <div>
-        <Select options={options}/>
-    </div>
+    <div className="container">
+        {users.map((user) => (
+            <div className="user" key={user._id}>
+            <Select options={options}/>
     <div style={{ display: "flex", border: "1px solid grey  "}}>
         <Button sx={{ color: "black", fontSize: 25, }}><FaEdit /></Button>
-        {/* Map out users information for retrieving type of animal */}
         <p style={{ marginLeft: "2%", marginTop: 10}}><b>Type:</b> Dog</p>
     </div>
     <div>
@@ -96,11 +109,12 @@ const Schedule = () => {
         <Checkbox defaultChecked />
         }
         label="Daily" />
-
         </div>
     </div>
-   </>
+    </div>
+        ),)}
+        </div>
   )
 }
 
-export default Schedule
+export default Schedule;
