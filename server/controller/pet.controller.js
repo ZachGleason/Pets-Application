@@ -10,7 +10,7 @@ module.exports = {
 				if (err) {
 					res.status(200).json({
 						status: "error",
-						message: err,
+						messege: err,
 					});
 					throw err;
 				} else {
@@ -30,7 +30,7 @@ module.exports = {
 			if (err) {
 				res.status(200).json({
 					status: "error",
-					message: err,
+					messege: err,
 				});
 				throw err;
 			} else {
@@ -49,7 +49,7 @@ module.exports = {
 			if (err) {
 				res.status(200).json({
 					status: "error",
-					message: err,
+					messege: err,
 				});
 				throw err;
 			} else {
@@ -60,10 +60,42 @@ module.exports = {
 		});
 	},
 
+  // add a new pet
 	addNew: (req, res) => {
 		let query =
-			"INSERT INTO Pets (name, age, breed, parents_name, allergies, notes, type_id, users_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?); ";
-    
-    connection.query(query, [req.body.name, req.body.age, req.body.breed])
+			"INSERT INTO Pets (name, age, breed, parents_name, allergies, notes, type_id, users_id, birth, rescue_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?); ";
+
+		connection.query(query, [req.body.name, req.body.age, req.body.breed, req.body.parents_name, req.body.allergies, req.body.notes, req.body.type_id, req.body.users_id, req.body.birth, req.body.rescue_date], (err, result) => {
+      if (err) {
+				res.status(201).json({
+					status: "error",
+					messege: err,
+				});
+				throw err;
+			} else {
+				res.status(201).json({
+					data: result,
+          messege : "Action successful!"
+				});
+			}
+    });
 	},
+
+  // set media for a pet
+  setMedia : (req, res) => {
+    let query = "UPDATE Pets SET media = ? WHERE id = ?;";
+    connection.query(query, [req.body.media, req.params.id], (err, result) => {
+      if (err) {
+				res.status(201).json({
+					status: "error",
+					messege: err,
+				});
+				throw err;
+			} else {
+				res.status(201).json({
+					data: result,
+				});
+			}
+    })
+  }
 };

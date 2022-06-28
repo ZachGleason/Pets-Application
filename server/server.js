@@ -9,6 +9,9 @@ app.use(express.urlencoded({ extended: true }));
 // apply type routes
 require("./routes/type.routes")(app)
 
+// apply pet routes
+require("./routes/pet.routes")(app)
+
 app.listen(8000, () => {
   console.log("Listening at Port 8000!")
 })

@@ -6,7 +6,7 @@ module.exports = {
 			if (err) {
 				res.status(200).json({
 					status: "error",
-					message: err,
+					messege: err,
 				});
         throw err;
 			} else {
@@ -23,12 +23,13 @@ module.exports = {
 			if (err) {
 				res.status(201).json({
 					status: "error",
-					message: err,
+					messege: err,
 				});
         throw err;
 			} else {
 				res.status(201).json({
 					data: result,
+          messege : "Action successful!"
 				});
 			}
 		});
@@ -40,13 +41,14 @@ module.exports = {
 			if (err) {
 				res.status(201).json({
 					status: "error",
-					message: err,
+					messege: err,
 				});
 
         throw err;
 			} else {
 				res.status(201).json({
 					data: result,
+          messege : "Action successful!"
 				});
 			}
 		});
@@ -58,12 +60,13 @@ module.exports = {
 			if (err) {
 				res.status(200).json({
 					status: "error",
-					message: err,
+					messege: err,
 				});
         throw err;
 			} else {
 				res.status(200).json({
 					data: result,
+          messege : "Action successful!"
 				});
 			}
 		});
