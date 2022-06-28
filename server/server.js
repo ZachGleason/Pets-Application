@@ -14,6 +14,8 @@ require("./routes/pet.routes")(app);
 require("./routes/medication.routes")(app);
 // apply food routes
 require("./controller/food.controller")(app);
+// apply task routes
+require("./controller/task.controller")(app);
 
 app.listen(8000, () => {
 	console.log("Listening at Port 8000!");
