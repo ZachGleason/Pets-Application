@@ -1,11 +1,12 @@
 import React from 'react';
-import Select from 'react-select'
+import axios from 'axios';
+import { useEffect } from 'react';
+import { useParams } from 'react';
+import Select from 'react-select';
 import { GoDiffAdded } from "react-icons/go";
 import { FaEdit } from "react-icons/fa";
 import Button from '@mui/material/Button';
 import { TextField } from '@mui/material';
-
-
 
 const General = () => {
 
@@ -15,14 +16,28 @@ const General = () => {
         { value: 'Jake', label: 'Jake' }
       ]
 
-  return (
-      <>
-        <div >
+      const {id} = useParams();
+      console.log('ID', id);
+      useEffect(() => {
+        axios
+        .get(`http://localhost:8000/api/general/${id}`)
+        .then((res) => {
+        console.log('User', res.data);
+        setUser(res.data);
+        })
+        .catch((err) => {
+        console.log(err);
+        });
+    }, []);
+
+    return (
+        <div class="container" >
+            {users.map((user) => (
+                <div className="user" key={user._id}>
             <Select options={options}/>
-        </div>
         <div style={{ display: "flex", border: "1px solid grey  "}}>
                 <Button sx={{ color: "black", fontSize: 25, }}><FaEdit /></Button>
-                {/* Map out users information for retrieving type of animal */}
+                
                 <p style={{ marginLeft: "2%", marginTop: 10}}><b>Type:</b> Dog</p>
         </div>
         <div>
@@ -48,8 +63,10 @@ const General = () => {
         <div style={{marginTop: 10, marginLeft: 55}}>
             <input placeholder='Notes' type="text" cols="40" rows="5" style={{width: "85%", height: 92}}></input>
         </div>
-    </>
+        </div>
+  ),)}
+  </div>
   )
 }
 
-export default General
+export default General;
