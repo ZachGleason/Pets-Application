@@ -8,20 +8,18 @@ import Button from '@mui/material/Button';
 
 
 function OwnerProfile() {
-    const [name, setName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [password, setPassword] = useState(''), 
     const { id } = useParams();
     useEffect(() => {
         axios
             .get(`http://localhost:8000/api/users/${id}`)
             .then((res) => {
                 console.log('User', res.data);
-                setName(res.data.name);
-                setLastName(res.data.lastName);
+                setUsername(res.data.username);
                 setEmail(res.data.email);
-                setPhoneNumber(res.data.phoneNumber);
+                setPassword(res.data.password);
             })
             .catch((err) => {
                 console.log(err);
@@ -33,10 +31,9 @@ function OwnerProfile() {
             e.preventDefault();
             axios
             .put(`http://localhost:8000/api/users/${id}`, {
-                name,
-                lastName,
+                usernname,
                 email,
-                phoneNumber,
+                password
             })
             .then((res) => {
                 navigate('/');
@@ -60,19 +57,16 @@ function OwnerProfile() {
             <div style={{height: 300, overflow: "scroll"}} >
                 <div style={{ width: "95%", height: 300, border: "1px solid black", borderRadius: 15, marginLeft: 10, marginTop: 8 }}>
                 <FormControl onsubmit={submitHandler}>
-                <InputLabel htmlFor="my-input">Name:</InputLabel>
-                <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-                <br/>
-                <InputLabel htmlFor="my-input">Last Name:</InputLabel>
-                <Input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                <InputLabel htmlFor="my-input">Username:</InputLabel>
+                <Input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
                 <br/>
                 <InputLabel htmlFor="my-input">Email:</InputLabel>
                 <Input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <br/>
-                <InputLabel htmlFor="my-input">Phone Number:</InputLabel>
-                <Input type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+                <InputLabel htmlFor="my-input">Password:</InputLabel>
+                <Input type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <br/>
-                <Button variant="outlined">Update</Button>
+                <Button variant="outlined">Update Profile</Button>
                 </FormControl>
                 );
                 </div>
@@ -81,7 +75,6 @@ function OwnerProfile() {
         </div>
         )
 }
-
 
 export default OwnerProfile;
 
