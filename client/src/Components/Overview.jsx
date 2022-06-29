@@ -1,31 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import General from './General';
 import Schedule from '../Components/Schedule';
-import Media from '../Components/Media';
+import { useNavigate } from "react-router-dom";
 
-const Overview = () => {
+const Overview = (props) => {
+
+  const [pet_id, setPet_id] = useState("");
+
+//   const nav = useNavigate();
+
+//   useEffect(() => {
+//   if (Object.keys(props.user).length === 0) {
+//     nav("/");
+//   }
+// }, []);
+
+
   return (
     <div >
         <Tabs style={{ maxWidth: "95%", border: "1px solid black", height: "80%", borderRadius: 8, marginLeft: 13}}>
             <TabList>
             <Tab>General</Tab>
             <Tab>Schedule</Tab>
-            <Tab>Media</Tab>
-            <Tab>Alerts</Tab>
             </TabList>
             <div style={{ height: "80vh", }}>
               <TabPanel>
-                <General />
+                <General pet_id={pet_id} setPet_id={setPet_id}/>
               </TabPanel>
 
               <TabPanel>
-                <Schedule />
-              </TabPanel>
-
-              <TabPanel> 
-                <Media />
+                <Schedule pet_id={pet_id} setPet_id={setPet_id}/>
               </TabPanel>
             </div>
         </Tabs>

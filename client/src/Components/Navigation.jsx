@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css'
 import { FiLogIn, FiLink } from "react-icons/fi";
 import Container from 'react-bootstrap/Container';
@@ -6,8 +6,17 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = (props) => {
+
+//   const nav = useNavigate();
+
+//   useEffect(() => {
+//   if (Object.keys(props.user).length === 0) {
+//     nav("/");
+//   }
+// }, []);
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="secondary" variant="dark">

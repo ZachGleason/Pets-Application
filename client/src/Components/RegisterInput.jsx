@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -10,7 +10,16 @@ import { useSpring, animated } from 'react-spring'
 import { FiStar } from "react-icons/fi";
 import axios from 'axios';
 
-const RegisterInput = () => {
+const RegisterInput = (props) => {
+
+//   const nav = useNavigate();
+
+//   useEffect(() => {
+//   if (Object.keys(props.user).length === 0) {
+//     nav("/");
+//   }
+// }, []);
+
 
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")

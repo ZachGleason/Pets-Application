@@ -8,7 +8,7 @@ const Login = () => {
       <div className='background'>
         <Navigation />
         <div style={{ height: 400, backgroundColor: "#bababa", maxWidth: 400, margin: "auto", borderRadius: 10}}>
-            <LoginInput />
+              <LoginInput />
         </div>
       </div>
   )

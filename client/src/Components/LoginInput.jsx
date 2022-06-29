@@ -6,10 +6,10 @@ import { MdOutlineMailOutline} from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios'
+import axios from 'axios';
 
 
-const LoginInput = () => {
+const LoginInput = (props) => {
 
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
@@ -44,7 +44,7 @@ const LoginInput = () => {
         {/* <h3 className='welcome'>Welcome back</h3> */}
         <Form.Label style={{ marginTop: 30}}>Email address</Form.Label>
         <InputGroup className="mb-2" onChange={ e => setEmail(e.target.value)}>
-            <InputGroup.Text><MdOutlineMailOutline /></InputGroup.Text>
+            <InputGroup.Text><MdOutlineMailOutline /></InputGroup.Text> 
             <Form.Control id="inlineFormInputGroup" placeholder="Email" />
           </InputGroup>
         <Form.Text className="text-muted"  style={{textAlign: "center"}}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -7,9 +7,19 @@ import Offcanvas from 'react-bootstrap/Offcanvas'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
+import { useNavigate } from "react-router-dom";
 
 
-const DashboardNav = () => {
+const DashboardNav = (props) => {
+
+    // const nav = useNavigate();
+
+    // useEffect(() => {
+	// 	if (Object.keys(props.user).length === 0) {
+	// 		nav("/");
+	// 	}
+	// }, []);
+
   return (
     <div>
         <>
