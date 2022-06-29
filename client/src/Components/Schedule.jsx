@@ -8,7 +8,6 @@ import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
 import Axios from 'axios';
-import { Modal } from 'react-responsive-modal';
 import { useNavigate } from "react-router-dom";
 import '../App.css'
 

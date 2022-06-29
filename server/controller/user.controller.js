@@ -10,8 +10,8 @@ module.exports = {
         let salt = crypto.randomBytes(8).toString('hex')
         let password_hash = crypto.createHash('sha256').update(req.body.password + salt).digest('hex')
 
-        let sql = 'insert into users (username, phone, email, password, salt) values (?,?,?,?,?)'
-        let args = [req.body.username, req.body.phone, req.body.email, password_hash, salt]
+        let sql = 'insert into users (firstname, lastname, email, password, salt) values (?,?,?,?,?)'
+        let args = [req.body.firstname, req.body.lastname, req.body.email, password_hash, salt]
         
         connection.query(sql, args,
             (err, result) => {
@@ -95,13 +95,12 @@ module.exports = {
         const password_hash = crypto.createHash('sha256').update(req.body.password + salt).digest('hex')
 
         let sqlQuery = `update users
-                        set username = ?,
-                            phone = ?,
+                        set firstname = ?,
+                            lastname = ?,
                             email = ?,
                             password = ?
                         where id = ?;`
-        let args = [req.body.username, req.body.phone,
-            req.body.email, password_hash, req.params.id]
+        let args = [req.body.firstname, req.body.lastname, req.body.email, password_hash, req.params.id]
 
         connection.query(sqlQuery, args,
             (err, result) => {
