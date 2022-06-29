@@ -1,11 +1,12 @@
 import React from 'react';
-import Select from 'react-select'
+import axios from 'axios';
+import { useEffect } from 'react';
+import { useParams } from 'react';
+import Select from 'react-select';
 import { GoDiffAdded } from "react-icons/go";
 import { FaEdit } from "react-icons/fa";
 import Button from '@mui/material/Button';
 import { TextField } from '@mui/material';
-
-
 
 const General = () => {
 
@@ -16,10 +17,10 @@ const General = () => {
       ]
 
       const {id} = useParams();
-    console.log('ID', id);
-    useEffect(() => {
+      console.log('ID', id);
+      useEffect(() => {
         axios
-        .get(`http://localhost:8000/api/schedule/${id}`)
+        .get(`http://localhost:8000/api/general/${id}`)
         .then((res) => {
         console.log('User', res.data);
         setUser(res.data);
@@ -29,10 +30,10 @@ const General = () => {
         });
     }, []);
 
-  return (
+    return (
         <div class="container" >
-        {users.map((user) => (
-            <div className="user" key={user._id}>
+            {users.map((user) => (
+                <div className="user" key={user._id}>
             <Select options={options}/>
         <div style={{ display: "flex", border: "1px solid grey  "}}>
                 <Button sx={{ color: "black", fontSize: 25, }}><FaEdit /></Button>
