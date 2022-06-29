@@ -28,6 +28,7 @@ module.exports = {
 
     loginUser: (req, res) => {
         console.log("Hit loginUser endpoint")
+        console.log(req.body)
 
         let sql = `select password, salt from users
                     where email = ?`
