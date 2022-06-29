@@ -5,7 +5,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { MdOutlineMailOutline} from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import Button from '@mui/material/Button';
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 
 
@@ -17,22 +17,7 @@ const LoginInput = () => {
 
   const navigate = useNavigate()
 
-  const handleRegistration = (e) => {
-    e.preventDefault()
-    axios.post('http://localhost:8000/api/user/register', 
-    {
-      "username":username,
-      "phone": "811.123.1156",
-      "email": email,
-      "password": password
-    })
-    .then( res => {
-      console.log(res.data)
-    })
-    .catch( err => {
-      console.log(err)
-    })
-  }
+
 
   const handleLogin = (e) => {
     e.preventDefault()
