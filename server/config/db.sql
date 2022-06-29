@@ -19,15 +19,14 @@ USE `petproject` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `petproject`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(255) NOT NULL,
-  `phone` VARCHAR(45) NOT NULL,
+  `firstname` VARCHAR(255),
+  `lastname` VARCHAR(255),
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
+  `salt` VARCHAR(255) NOT NULL,
   `created_at` DATETIME NULL DEFAULT NOW(),
   `updated_at` DATETIME NULL DEFAULT NOW() ON UPDATE NOW(),
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,
-  UNIQUE INDEX `phone_UNIQUE` (`phone` ASC) VISIBLE,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB;
 
