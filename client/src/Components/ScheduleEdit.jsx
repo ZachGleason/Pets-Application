@@ -13,7 +13,7 @@ const ScheduleForm = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/tasks', {
+        axios.put('http://localhost:8000/api/tasks', {
         isDaily: 0,
         isCompleted: 0,
         name, 

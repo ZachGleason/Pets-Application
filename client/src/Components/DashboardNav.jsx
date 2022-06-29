@@ -37,9 +37,9 @@ const DashboardNav = (props) => {
                 <Offcanvas.Header closeButton></Offcanvas.Header>
                 <Offcanvas.Body>
                     <Nav className="justify-content-end flex-grow-1 pe-3">
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/animals">Animals</Nav.Link>
-                        <Nav.Link href="profile">Profile</Nav.Link>
+                        <Nav.Link href="/">Login</Nav.Link>
+                        <Nav.Link href="/register">Register</Nav.Link>
+                        <Nav.Link href="/dashboard">Home</Nav.Link>
                     </Nav>
                 </Offcanvas.Body>
                 </Navbar.Offcanvas>

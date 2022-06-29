@@ -3,14 +3,14 @@ import axios from 'axios';
 import { useParams } from 'react';
 import { GoDiffAdded } from "react-icons/go";
 import { FaEdit } from "react-icons/fa";
-import Button from '@mui/material/Button';
-import { TextField } from '@mui/material';
+import { FormControl, Input, Select, MenuItem, Button } from '@mui/material';
 import { useNavigate } from "react-router-dom";
+import { BsPlusLg } from "react-icons/bs";
 
 const General = (props) => {
 
 
-    // const nav = useNavigate();
+    const nav = useNavigate();
 
     // useEffect(() => {
 	// 	if (Object.keys(props.user).length === 0) {
@@ -54,9 +54,32 @@ const General = (props) => {
 			.catch((err) => console.log(err));
 	}, []);
 
+    const update = (e) => {
+        e.preventDefault();
+        axios.put(`http://localhost:8000/api/pets/:id`, {
+            name, 
+            age,
+            breed,
+            parents_name,
+            allergies,
+            notes,
+            type_id,
+            birth,
+            rescue_date,
+            users_id: 1
+    })
+    .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        nav("/dashboard");
+        window.location.reload(true);
+    })
+    .catch((err) => {console.log(err)})
+    }
+
     return (
-        <div class="container" >
-        <div style={{ display: "flex", border: "1px solid grey  "}}>
+        <div class="container" style={{ width: "100%"}}>
+        <div style={{ display: "flex", border: "1px solid grey" }}>
                 <select
 						className="form-control form-select"
 						id="type"
@@ -71,32 +94,61 @@ const General = (props) => {
 							);
 						})}
 					</select>
-                <Button sx={{ color: "black", fontSize: 25, }}><FaEdit /></Button>
         </div>
         <div>
-            <h1 style={{ fontFamily: 'Abel', marginLeft: 10, marginBottom: -10, marginTop: 40}}>General</h1>
+            <h1 style={{ fontFamily: 'Abel', marginLeft: 10, marginBottom: -10, marginTop: 40, display: "inline-block"}}>General</h1>
+            <BsPlusLg style={{display: "inline-block", marginLeft: 40, marginTop: -10}} onClick={() => nav(`/animal`)}/>
             <hr style={{ width: "95%", marginLeft: 10}}/>
         </div>
-        <div>
-            <TextField id="outlined-basic" type="text" label="test" sx={{ml: 1, width: "46%"}} value={pets.name}/>
-            <TextField id="outlined-basic" type="text"  variant="outlined" sx={{ml: 1, width: "46%"}} value={pets.breed}/>
-        </div>
-        <div style={{marginTop: 50}}>
-            <TextField id="outlined-basic" type="number" variant="outlined" sx={{ml: 1, width: "46%"}} value={pets.age}/>
-            <TextField id="outlined-basic"  type="number" label="Microchip ID" variant="outlined" sx={{ml: 1, width: "46%"}} />
-        </div>
-        <div style={{marginTop: 50}}>
-            <TextField id="outlined-basic" type="text" variant="outlined" sx={{ml: 1, width: "46%"}} value={pets.rescue_date}/>
-            <TextField id="outlined-basic" type="text" variant="outlined" sx={{ml: 1, width: "46%"}} value={pets.birth}/>
-        </div>
-        <div style={{marginTop: 50}}>
-            <TextField id="outlined-basic" type="text" variant="outlined" sx={{ml: 1, width: "46%"}} value={pets.parents_name}/>
-            <TextField id="outlined-basic" type="text" label="Notes" variant="outlined" sx={{ml: 1, width: "46%"}}/>
-        </div>
-        <div style={{marginTop: 10, marginLeft: 55}}>
-            <input placeholder='Notes' type="text" cols="40" rows="5" style={{width: "85%", height: 92}}></input>
-        </div>
-        </div>
+        <form onSubmit={ update }>
+            <div style={{ display: "flex"}}>
+                <div style={{ width: "46%"}}>
+                    <label style={{fontFamily: 'Abel', display: "inline"}}>Name</label>
+                    <input type="text" value={pets.name} style={{ml: 1, width: "100%", display: "inline"}} onChange={(e) => setName(e.target.value)}></input>
+                </div>
+                <div style={{ width: "46%", marginLeft: 10}}>
+                    <label style={{fontFamily: 'Abel', display: "inline"}}>Breed</label>
+                    <input type="text" value={pets.breed} style={{ml: 1, width: "100%", display: "inline"}} onChange={(e) => setBreed(e.target.value)}></input>
+                </div>
+            </div>
+            <div style={{ display: "flex", marginTop: 25}}>
+                <div style={{ width: "46%"}}>
+                    <label style={{fontFamily: 'Abel', display: "inline"}}>Age</label>
+                    <input type="number" value={pets.age} style={{ml: 1, width: "100%", display: "inline"}} onChange={(e) => setAge(e.target.value)}></input>
+                </div>
+                <div style={{ width: "46%", marginLeft: 10}}>
+                    <label style={{fontFamily: 'Abel', display: "inline"}}>Microchip ID</label>
+                    <input type="text" placeholder='131213223' style={{ml: 1, width: "100%", display: "inline"}}></input>
+                </div>
+            </div>
+            <div style={{ display: "flex", marginTop: 25}}>
+                <div style={{ width: "46%"}}>
+                    <label style={{fontFamily: 'Abel', display: "inline"}}>Rescue Date</label>
+                    <input type="text" value={pets.rescue_date} style={{ml: 1, width: "100%", display: "inline"}} onChange={(e) => setRescue_date(e.target.value)}></input>
+                </div>
+                <div style={{ width: "46%", marginLeft: 10}}>
+                    <label style={{fontFamily: 'Abel', display: "inline"}}>Date Of Birth</label>
+                    <input type="text" value={pets.birth} style={{ml: 1, width: "100%", display: "inline"}} onChange={(e) => setBirth(e.target.value)}></input>
+                </div>
+            </div>
+            <div style={{ display: "flex", marginTop: 25}}>
+                <div style={{ width: "46%"}}>
+                    <label style={{fontFamily: 'Abel', display: "inline"}}>Parents Name</label>
+                    <input type="text" value={pets.rescue_date} style={{ml: 1, width: "100%", display: "inline"}} onChange={(e) => setParents_Name(e.target.value)}></input>
+                </div>
+                <div style={{ width: "46%", marginLeft: 10}}>
+                    <label style={{fontFamily: 'Abel', display: "inline"}}>Allergies</label>
+                    <input type="text" value={pets.allergies} style={{ml: 1, width: "100%", display: "inline"}} onChange={(e) => setAllergies(e.target.value)}></input>
+                </div>
+            </div>
+            <div style={{paddingTop: 25, marginTop: 25 }}>
+                <input placeholder='Notes' type="text" cols="40" rows="5" style={{width: "95%", height: 92}}></input>
+            </div>
+            <div style={{ marginTop: 25, justifyContent: "center", alignItems: "center", display: "flex" }}>
+            <Button variant="contained" type="submit" sx={{width: "40%", backgroundColor: "black", marginLeft: 1 }}>Update Information</Button>
+            </div>
+        </form>
+    </div>
  )
 }
 

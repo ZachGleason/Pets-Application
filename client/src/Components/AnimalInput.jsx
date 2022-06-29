@@ -102,7 +102,9 @@ const submitHandler = (e) => {
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                         <Form.Control as="textarea" placeholder='Notes' rows={3} onChange={(e) => setNotes(e.target.value)}/>
                     </Form.Group>
-                    <Button type='submit' sx={{backgroundColor: "white !important", color: "black", background: 'none', width: "15%", marginTop: 1, height: 30, justifyContent: "center", alignItems: "center" }}><b>Create Schedule</b></Button>
+                    <div style={{ justifyContent: "center", alignItems: "center", display: "flex"  }}>
+                        <Button type='submit' sx={{backgroundColor: "white !important", color: "black", background: 'none', width: "55%", marginTop: 1, height: 30, justifyContent: "center", alignItems: "center" }}><b>Create Schedule</b></Button>
+                    </div>
             </Form>
         </div>
     </div>

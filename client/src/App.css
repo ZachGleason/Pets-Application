@@ -5,7 +5,7 @@
 .black {
   background-color: black;
   height: 100vh;
-  
+
 }
 .header {
     font-family: 'Abel';
@@ -33,6 +33,14 @@ h5 {
   }
   h5:after {
     margin-left: 10px
+  }
+
+  .checkmark {
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
   }
 
 

@@ -10,6 +10,7 @@ import TextField from '@mui/material/TextField';
 import Axios from 'axios';
 import { Modal } from 'react-responsive-modal';
 import { useNavigate } from "react-router-dom";
+import '../App.css'
 
 const Schedule = (props) => {
 
@@ -36,9 +37,6 @@ const Schedule = (props) => {
   return (
       <div>
     <div className="container">
-    <div style={{ display: "flex", border: "1px solid grey  "}}>
-        <Button sx={{ color: "black", fontSize: 25, }}><FaEdit /></Button>
-    </div>
     <div>
         <h1 style={{ fontFamily: 'Abel', marginLeft: 10, marginBottom: -10, marginTop: 40, display: "inline-block"}}>Schedule</h1>
         <BsPlusLg style={{display: "inline-block", marginLeft: 40, marginTop: -10}} onClick={() => nav(`/scheduling/${props.pet_id}`)}/>
@@ -48,10 +46,25 @@ const Schedule = (props) => {
         {/* Map out all of the scheduled boxes for the selected pet */}
           {scheduling.map((info, idx) => {
             return (
-             <div style={{ width: "95%", height: 160, border: "1px solid black", borderRadius: 15, marginLeft: 10, marginTop: 8 }} key="idx">
-                <p>{info.name}</p>
-                <p>{info.time}</p>
-                <p>{info.frequency}</p>
+             <div style={{ width: "95%", height: 110, border: "1px solid black", borderRadius: 15, marginLeft: 10, marginTop: 8, alignItems: "center", justifyContent: "center" }} key="idx">
+                <div style={{ marginLeft: 15, display: "inline-block", maxWidth: "100%"}}>
+                    <div>
+                        <p style={{ display: "inline-block", marginLeft: 5}}><b>Task:</b> {info.name}</p>
+                        <p style={{ display: "inline-block", marginLeft: 20}}><b>Time:</b> {info.time}</p>
+                        <p style={{ display: "inline-block", marginLeft: 20}}><b>Frequency:</b> {info.frequency}</p>
+                    </div>
+                    <div style={{ display: "inline-block"}}>
+                        <label style={{ alignContent: "center", marginLeft: 20}}>
+                            Daily
+                            <input type="checkbox" className='checkmark' style={{ marginLeft: 10}}></input>  
+                        </label>
+                        <label style={{ alignContent: "center", marginLeft: 20, textAlign: "center"}}>
+                            Completed
+                            <input type="checkbox" className='checkmark' style={{ marginLeft: 10}}></input>  
+                        </label>
+                    </div>
+                    <Button sx={{ color: "black", fontSize: 25, marginTop: -3}} ><FaEdit /></Button>
+                </div>
               </div>
           )})}
         </div>
