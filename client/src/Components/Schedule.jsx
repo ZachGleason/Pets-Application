@@ -7,8 +7,7 @@ import { FaEdit } from "react-icons/fa";
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
-import { FormControlLabel } from '@mui/material/FormControlLabel';
-import axios from 'axios';
+import { FormControlLabel } from '@mui/material';
 
 const Schedule = () => {
 
@@ -23,18 +22,17 @@ const Schedule = () => {
         axios
         .get(`http://localhost:8000/api/schedule/${id}`)
         .then((res) => {
-        console.log('User', res.data);
-        setUser(res.data);
+        console.log('Pet', res.data);
+        setPet(res.data);
         })
         .catch((err) => {
         console.log(err);
         });
     }, []);
-
   return (
     <div className="container">
-        {users.map((user) => (
-            <div className="user" key={user._id}>
+        {pets.map((pet) => (
+            <div className="pet" key={pet._id}>
             <Select options={options}/>
     <div style={{ display: "flex", border: "1px solid grey  "}}>
         <Button sx={{ color: "black", fontSize: 25, }}><FaEdit /></Button>

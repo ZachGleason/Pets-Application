@@ -6,6 +6,7 @@ import Register from './Pages/Register.jsx';
 import Dashboard from './Pages/Dashboard.jsx';
 import General from './Components/General';
 import Schedule from './Components/Schedule';
+import OwnerProfile from './Components/OwnerProfile';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path='/dashboard' element={ <Dashboard /> }/>
         <Route path='/general' element={ <General /> }/>
         <Route path='/schedule' element={ <Schedule /> }/>
+        <Route path='/profile' element={ <OwnerProfile/> }/>
         
       </Routes>
     </BrowserRouter>
