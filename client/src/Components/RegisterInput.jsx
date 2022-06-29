@@ -21,7 +21,7 @@ const RegisterInput = (props) => {
 // }, []);
 
 
-  const [username, setUsername] = useState("")
+  //const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [firstname, setFirstname] = useState("")
@@ -33,8 +33,8 @@ const RegisterInput = (props) => {
     e.preventDefault()
     axios.post('http://localhost:8000/api/user/register', 
     {
-      "username": firstname + lastname,
-      "phone": "811.123.1156",
+      "firstname": firstname,
+      "lastname": lastname,
       "email": email,
       "password": password
     })
