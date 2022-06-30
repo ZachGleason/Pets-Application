@@ -28,6 +28,7 @@ const LoginInput = (props) => {
     })
     .then( res => {
       console.log(res.data)
+      props.setUser({userid : res.data.userid, user_email: email})
       //TODO navigate to 
       navigate("/Dashboard")
     })

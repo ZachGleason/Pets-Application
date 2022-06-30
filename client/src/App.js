@@ -19,7 +19,7 @@ function App() {
         <Route path='/' element={ <Login user={user} setUser={setUser}/> }/>
         <Route path='/register' element={ <Register user={user} setUser={setUser}/> }/>
         <Route path='/dashboard' element={ <Dashboard user={user} setUser={setUser}/> }/>
-        <Route path='/general' element={ <General user={user} setUser={setUser}/> }/>
+        {/* <Route path='/general' element={ <General user={user} setUser={setUser}/> }/> */}
         <Route path='/schedule' element={ <Schedule user={user} setUser={setUser}/> }/>
         <Route path='/scheduling/:petid' element={ <Scheduling user={user} setUser={setUser}/> }/>
         <Route path='/animal' element={ <Animals user={user} setUser={setUser}/> }/>

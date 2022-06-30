@@ -28,7 +28,7 @@ const submitHandler = (e) => {
     type_id,
     birth,
     rescue_date,
-    users_id: 1
+    users_id: props.user.userid
 })
     .then(() => nav('/dashboard'))
     .catch(err=>console.log(err))
