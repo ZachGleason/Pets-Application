@@ -16,6 +16,7 @@ const General = (props) => {
 	// 	}
 	// }, []);
 
+    const [re, setRe] = useState(0)
 	const [name, setName] = useState("");
 	const [age, setAge] = useState("");
 	const [breed, setBreed] = useState("");
@@ -65,7 +66,7 @@ const General = (props) => {
 				}
 			})
 			.catch((err) => console.log(err));
-	}, []);
+	}, [re]);
 
 	const update = (e) => {
 		e.preventDefault();
@@ -80,13 +81,13 @@ const General = (props) => {
 				type_id,
 				birth,
 				rescue_date,
-				users_id: 1,
+				users_id: props.user.userid,
 			})
 			.then((res) => {
 				console.log(res);
 				console.log(res.data);
-				nav("/dashboard");
-				window.location.reload(true);
+				alert("update successfully!")
+                setRe(re + 1);
 			})
 			.catch((err) => {
 				console.log(err);
